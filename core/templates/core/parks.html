@@ -1,0 +1,48 @@
+{% extends 'core/base.html' %}
+{% block body_class %}default-page{% endblock %}
+
+{% block content %}
+
+<section class="list-page">
+
+    <a href="/" class="back-home">← Voltar</a>
+
+    <h1>Parques</h1>
+
+    <div class="cards-grid">
+        {% for park in parks %}
+            <a class="info-card card-link" href="/parks-page/{{ park.id }}/">
+
+                {% if park.image %}
+                    <img src="{{ park.image.url }}" alt="{{ park.name }}">
+                {% endif %}
+
+                <div class="card-body">
+                    <h2>{{ park.name }}</h2>
+                    <p>{{ park.description }}</p>
+
+                    <!-- 🟢 DISPONIBILIDADE -->
+                    {% if park.availability %}
+                        <p>
+                            <strong>Funcionamento:</strong>
+                            {{ park.availability.open_time }} às {{ park.availability.close_time }}
+                        </p>
+
+                        {% if park.availability.currently_open %}
+                            <span class="tag open">🟢 Aberto</span>
+                        {% else %}
+                            <span class="tag closed">🔴 Fechado</span>
+                        {% endif %}
+                    {% else %}
+                        <span class="tag closed">Horário não informado</span>
+                    {% endif %}
+
+                </div>
+
+            </a>
+        {% endfor %}
+    </div>
+
+</section>
+
+{% endblock %}

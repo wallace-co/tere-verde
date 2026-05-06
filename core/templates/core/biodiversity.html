@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+{% block body_class %}default-page{% endblock %}
+
+{% block content %}
+
+<section class="list-page">
+    <a href="/" class="back-home">← Voltar</a>
+
+    <h1>Biodiversidade</h1>
+
+    <div class="cards-grid">
+        {% for item in biodiversity %}
+            <div class="info-card">
+                {% if item.image %}
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}">
+                {% endif %}
+
+                <div class="card-body">
+                    <h2>{{ item.name }}</h2>
+                    <span class="tag">{{ item.category }}</span>
+                    <p>{{ item.description }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

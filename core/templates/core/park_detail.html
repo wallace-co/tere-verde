@@ -1,0 +1,54 @@
+{% extends 'core/base.html' %}
+{% block body_class %}default-page{% endblock %}
+{% block content %}
+
+<section class="detail-page">
+
+    <a class="back-link" href="/parks-page/">← Voltar</a>
+
+    <div class="detail-header">
+        <h1>{{ park.name }}</h1>
+    </div>
+
+    <div class="detail-card">
+        {% if park.image %}
+            <img src="{{ park.image.url }}" alt="{{ park.name }}">
+        {% endif %}
+
+        <p>{{ park.description }}</p>
+    </div>
+
+    <h2 class="section-title">Trilhas</h2>
+
+    <div class="trail-list">
+        {% for trail in trails %}
+            <div class="trail-card">
+                {% if trail.image %}
+                    <img src="{{ trail.image.url }}" alt="{{ trail.name }}">
+                {% endif %}
+
+                <div>
+                    <h3>{{ trail.name }}</h3>
+
+                    <div class="tags">
+                        <span class="tag difficulty">{{ trail.difficulty }}</span>
+                        <span class="tag">📏 {{ trail.length_km }} km</span>
+
+                        {% if trail.duration_min %}
+                            <span class="tag">⏱️ {{ trail.duration_min }} min</span>
+                        {% endif %}
+
+                    
+                    </div>
+
+                    <p>{{ trail.description }}</p>
+                </div>
+            </div>
+        {% empty %}
+            <p>Este parque ainda não possui trilhas cadastradas.</p>
+        {% endfor %}
+    </div>
+
+</section>
+
+{% endblock %}

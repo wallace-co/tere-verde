@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+{% block body_class %}default-page{% endblock %}
+
+{% block content %}
+
+<section class="list-page">
+    <a href="/" class="back-home">← Voltar</a>
+
+    <h1>Cachoeiras</h1>
+
+    <div class="cards-grid">
+        {% for waterfall in waterfalls %}
+            <div class="info-card">
+                {% if waterfall.image %}
+                    <img src="{{ waterfall.image.url }}" alt="{{ waterfall.name }}">
+                {% endif %}
+
+                <div class="card-body">
+                    <h2>{{ waterfall.name }}</h2>
+                
+                    {% if waterfall.park %}
+                        <p class="location">📍 {{ waterfall.park.name }}</p>
+                    {% elif waterfall.location %}
+                        <p class="location">📍 {{ waterfall.location }}</p>
+                    {% else %}
+                        <p class="location">📍 Teresópolis</p>
+                    {% endif %}
+                
+                    <p>{{ waterfall.description }}</p>
+                </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

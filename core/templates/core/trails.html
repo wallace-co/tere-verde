@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+{% block body_class %}default-page{% endblock %}
+{% block content %}
+
+<section class="list-page">
+
+    <a href="/" class="back-home">← Voltar</a>
+
+<section class="list-page">
+<section class="list-page">
+    <h1>Trilhas</h1>
+
+    <div class="cards-grid">
+        {% for trail in trails %}
+            <div class="info-card">
+                {% if trail.image %}
+                    <img src="{{ trail.image.url }}" alt="{{ trail.name }}">
+                {% endif %}
+
+                <div class="card-body">
+                    <h2>{{ trail.name }}</h2>
+                    <p><strong>Parque:</strong> {{ trail.park.name }}</p>
+                    <p>{{ trail.description }}</p>
+
+                    <div class="tags">
+                        <span class="tag difficulty">{{ trail.difficulty }}</span>
+                        <span class="tag">📏 {{ trail.length_km }} km</span>
+
+                        {% if trail.duration_min %}
+                            <span class="tag">⏱️ {{ trail.duration_min }} min</span>
+                        {% endif %}
+                       
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}
