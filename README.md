@@ -1,10 +1,5 @@
 # 🌿 Terê Verde
 
-![Django](https://img.shields.io/badge/Django-4.x-green)
-![DRF](https://img.shields.io/badge/DRF-API-red)
-![Status](https://img.shields.io/badge/status-MVP-blue)
-![Deploy](https://img.shields.io/badge/deploy-Render-purple)
-
 Plataforma web para consulta de **trilhas, parques, cachoeiras, biodiversidade e eventos ecológicos** de Teresópolis/RJ.
 
 🔗 **Acesse:** https://tere-verde.onrender.com
