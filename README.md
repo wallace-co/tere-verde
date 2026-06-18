@@ -125,7 +125,7 @@ tere-verde/
 
 ## 🖥️ Como rodar localmente
 
-```text
+```bash
 git clone https://github.com/wallace-co/tere-verde.git
 
 cd tere-verde
@@ -135,12 +135,24 @@ venv\Scripts\activate
 
 pip install -r requirements.txt
 
-🔐 Acesso Admin
+python manage.py migrate
 
-admin: admin
-senha: 12345678
+python manage.py runserver
+```
 
+## 🔐 Acesso Admin
+
+Para criar um usuário administrador:
+
+```bash
 python manage.py createsuperuser
+```
+
+Após criar o usuário, acesse:
+
+```text
+http://127.0.0.1:8000/admin/
+```
 
 🌐 Deploy
 
